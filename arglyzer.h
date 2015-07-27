@@ -9,11 +9,13 @@ typedef struct OptionType
 {
     char name;
     char long_name[MAXLEN];
-    char **param;
-    unsigned short found;
     unsigned short nparams;
+    unsigned short found;
+    char **param;
 } Option;
 
-int analyze(int argc, char *argv[], OptionPtr *res);
+int analyze(int argc, char **argv, OptionPtr *res);
+static OptionPtr find_option(char opt, OptionPtr *options);
+static OptionPtr find_long_option(char *opt, OptionPtr *options);
 
 #endif
