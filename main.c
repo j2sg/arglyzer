@@ -3,7 +3,7 @@
 
 int main(int argc, char *argv[])
 {
-    if (analyze(argc, argv, 0) < 0) {
+    if (analyze(argc, argv, 0, 0) < 0) {
         fprintf(stderr, "Error during execution.\n");
         return 1;
     }
