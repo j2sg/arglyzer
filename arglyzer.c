@@ -42,6 +42,9 @@ int analyze(int argc, char **argv, OptionPtr *res, char **params)
                 }
 
                 if(np == curr_opt -> nparams) {
+                    if(assign_param(argv[0], params++) < 0)
+                        return -2;
+
                     curr_opt = NULL;
                     np = 0;
                 }
