@@ -1,6 +1,9 @@
 #ifndef OPTION_H
 #define OPTION_H
 
+#define MAXLEN    32
+#define MAXPARAMS 10
+
 typedef struct OptionType *OptionPtr;
 
 typedef struct OptionType
