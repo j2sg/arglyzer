@@ -11,4 +11,7 @@ typedef struct ResultType
     char **params;
 } Result;
 
+ResultPtr create_result(int max_args);
+int free_result(ResultPtr result);
+
 #endif
