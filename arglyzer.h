@@ -1,9 +1,6 @@
 #ifndef ARGLYZER
 #define ARGLYZER
 
-#define MAXLEN    32
-#define MAXPARAMS 10
-
 #include "option.h"
 
 int analyze(int argc, char **argv, OptionPtr *res, char **params);

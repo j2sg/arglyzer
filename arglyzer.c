@@ -35,7 +35,7 @@ int analyze(int argc, char **argv, OptionPtr *res, char **params)
                     return -2;
             } else {
                 if(np < curr_opt -> nparams) {
-                    if(np < MAXPARAMS && assign_param(argv[0], &(curr_opt -> param[np])) < 0)
+                    if(assign_param(argv[0], &(curr_opt -> param[np])) < 0)
                         return -2;
 
                     np++;
