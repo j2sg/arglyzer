@@ -27,7 +27,7 @@ OptionPtr create_option(char name, char *long_name, unsigned short nparams)
         option -> param = NULL;
     else {
         option -> param = (char **) malloc(sizeof(char *) * (option -> nparams + 1));
-        memset(option -> param, NULL, option -> nparams + 1);
+        memset(option -> param, 0, option -> nparams + 1);
     }
 
     return option;

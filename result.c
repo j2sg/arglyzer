@@ -10,10 +10,10 @@ ResultPtr create_result(int max_args)
     ResultPtr result = (ResultPtr) malloc(sizeof(Result));
 
     result -> options = (OptionPtr *) malloc(sizeof(OptionPtr) * (max_args + 1));
-    memset(result -> options, NULL, max_args + 1);
+    memset(result -> options, 0, max_args + 1);
 
     result -> params = (char **) malloc(sizeof(char *) * (max_args + 1));
-    memset(result -> params, NULL, max_args + 1);
+    memset(result -> params, 0, max_args + 1);
 
     return result;
 }
