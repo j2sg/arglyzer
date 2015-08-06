@@ -2,15 +2,14 @@
 #include <stdlib.h>
 #include <string.h>
 
-ResultPtr create_result(int max_args)
+ResultPtr create_result(OptionPtr *opts, int max_args)
 {
     if(max_args <= 0)
         return NULL;
 
     ResultPtr result = (ResultPtr) malloc(sizeof(Result));
 
-    result -> options = (OptionPtr *) malloc(sizeof(OptionPtr) * (max_args + 1));
-    memset(result -> options, 0, max_args + 1);
+    result -> options = opts;
 
     result -> params = (char **) malloc(sizeof(char *) * (max_args + 1));
     memset(result -> params, 0, max_args + 1);
