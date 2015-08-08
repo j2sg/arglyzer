@@ -13,6 +13,7 @@ ResultPtr analyze(int argc, char **argv, OptionPtr *opts)
     ResultPtr res = create_result(opts, argc - 1);
     OptionPtr curr_opt = NULL;
     char curr_name;
+    char **curr_param = res -> params;
     int np = 0;
 
     while(--argc > 0) {
@@ -32,18 +33,18 @@ ResultPtr analyze(int argc, char **argv, OptionPtr *opts)
             }
         } else {
             if(curr_opt == NULL || (curr_opt != NULL && curr_opt -> nparams == 0)) {
-                if(assign_param(argv[0], res -> params++) < 0)
+                if(assign_param(argv[0], curr_param++) < 0)
                     return NULL;
             } else {
                 if(np < curr_opt -> nparams) {
-                    if(assign_param(argv[0], &(curr_opt -> param[np])) < 0)
+                    if(assign_param(argv[0], curr_opt -> param + np) < 0)
                         return NULL;
 
                     np++;
                 }
 
                 if(np == curr_opt -> nparams) {
-                    if(assign_param(argv[0], res -> params++) < 0)
+                    if(assign_param(argv[0], curr_param++) < 0)
                         return NULL;
 
                     curr_opt = NULL;
