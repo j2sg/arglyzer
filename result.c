@@ -22,13 +22,10 @@ int free_result(ResultPtr result)
     if(result == NULL)
         return 1;
 
-    while(result -> options++ != NULL)
-        free_option(*result -> options);
+    char **params_ptr;
 
-    free(result -> options);
-
-    while(result -> params++ != NULL)
-        free(*result -> params);
+    for(params_ptr = result -> params; *params_ptr != NULL; ++params_ptr)
+        free(*params_ptr);
 
     free(result -> params);
 
