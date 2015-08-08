@@ -12,6 +12,7 @@ typedef struct ResultType
 } Result;
 
 ResultPtr create_result(OptionPtr *opts, int max_args);
+int print_result(ResultPtr result);
 int free_result(ResultPtr result);
 
 #endif
