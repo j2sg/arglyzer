@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <ctype.h>
 #include <string.h>
+#include <stdio.h>
 
 OptionPtr create_option(char name, char *long_name, unsigned short nparams)
 {
@@ -31,6 +32,28 @@ OptionPtr create_option(char name, char *long_name, unsigned short nparams)
     }
 
     return option;
+}
+
+int print_option(OptionPtr option)
+{
+    if(option == NULL)
+        return 1;
+
+    printf("Option[-%c] : long name=%s nparams=%d found=%d params={",
+           option -> name,
+           option -> long_name != NULL ? option -> long_name : "",
+           option -> nparams,
+           option -> found);
+
+    if(option -> param != NULL) {
+        char **param_ptr;
+
+        for(param_ptr = option -> param; *param_ptr != NULL; ++param_ptr)
+            printf("%s ", *param_ptr);
+    }
+    printf("}\n");
+
+    return 0;
 }
 
 int free_option(OptionPtr option)

@@ -13,6 +13,7 @@ typedef struct OptionType
 } Option;
 
 OptionPtr create_option(char name, char *long_name, unsigned short nparams);
+int print_option(OptionPtr option);
 int free_option(OptionPtr option);
 
 #endif
