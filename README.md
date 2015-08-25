@@ -1,20 +1,20 @@
-<h1>arglyzer : A Simple Argument Analyzer in C</h1>
+<h1>arglyzer - Simple Argument Analyzer</h1>
 
 <ul>
-<li><h3>Building arglyzer tester</h3>
+<li><h4>Building arglyzer tester</h4>
 <pre><code>mkdir build
 cd build
 cmake ..
 make
 </code></pre></li>
-<li><h3>Install</h3>
+<li><h4>Install</h4>
 <pre><code>su
 make install
 </code></pre></li>
-<li><h3>Quick Example</h3>
+<li><h4>Quick Example</h4>
 <ul><li>File example.c
-<pre><code>#include <arglyzer/arglyzer.h>
-#include <stdio.h>
+<pre><code>#include &ltarglyzer/arglyzer.h&gt
+#include &ltstdio.h&gt
 
 #define N_OPTIONS 3
 
