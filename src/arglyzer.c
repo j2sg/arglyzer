@@ -64,9 +64,6 @@ ResultPtr analyze(int argc, char **argv, OptionPtr *opts)
                 }
 
                 if(np == curr_opt -> nparams) {
-                    if(assign_param(argv[0], curr_param++) < 0)
-                        return NULL;
-
                     curr_opt = NULL;
                     np = 0;
                 }
