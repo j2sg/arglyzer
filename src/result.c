@@ -19,18 +19,19 @@
  **/
 
 #include "result.h"
+#include "option.h"
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
 
-ResultPtr create_result(OptionPtr *opts, int max_args)
+ResultPtr create_result(OptionsListPtr options_list, int max_args)
 {
     if(max_args <= 0)
         return NULL;
 
     ResultPtr result = (ResultPtr) malloc(sizeof(Result));
 
-    result -> options = opts;
+    result -> options = options_list;
 
     result -> params = (char **) malloc(sizeof(char *) * (max_args + 1));
     memset(result -> params, 0, max_args + 1);
@@ -46,10 +47,10 @@ int print_result(ResultPtr result)
     if(result -> options == NULL)
         return 2;
 
-    OptionPtr *opt_ptr;
+    OptionPtr opt_ptr;
 
-    for(opt_ptr = result -> options; *opt_ptr != NULL; ++opt_ptr)
-        print_option(*opt_ptr);
+    for(opt_ptr = result -> options -> lh_first; opt_ptr != NULL; opt_ptr = opt_ptr -> entries.le_next)
+        print_option(opt_ptr);
 
     char **params_ptr;
 

@@ -22,11 +22,12 @@
 #define ARGLYZER
 
 #include "result.h"
+#include "optionslist.h"
 #include "option.h"
 
-ResultPtr analyze(int argc, char **argv, OptionPtr *opts);
-static OptionPtr find_option(char opt, OptionPtr *options);
-static OptionPtr find_long_option(char *opt, OptionPtr *options);
+ResultPtr analyze(int argc, char **argv, OptionsListPtr options_list);
+static OptionPtr find_option(char opt, OptionsListPtr options_list);
+static OptionPtr find_long_option(char *opt, OptionsListPtr options_list);
 static int assign_param(char *arg, char **param);
 
 #endif

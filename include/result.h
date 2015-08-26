@@ -21,17 +21,17 @@
 #ifndef RESULT_H
 #define RESULT_H
 
-#include "option.h"
+#include "optionslist.h"
 
 typedef struct ResultType *ResultPtr;
 
 typedef struct ResultType
 {
-    OptionPtr *options;
+    OptionsListPtr options;
     char **params;
 } Result;
 
-ResultPtr create_result(OptionPtr *opts, int max_args);
+ResultPtr create_result(OptionsListPtr options_list, int max_args);
 int print_result(ResultPtr result);
 int free_result(ResultPtr result);
 

@@ -21,10 +21,13 @@
 #ifndef OPTION_H
 #define OPTION_H
 
+#include "queue.h"
+
 typedef struct OptionType *OptionPtr;
 
 typedef struct OptionType
 {
+    LIST_ENTRY(OptionType) entries;
     char name;
     char *long_name;
     unsigned short nparams;

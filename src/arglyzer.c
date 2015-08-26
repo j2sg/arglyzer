@@ -22,15 +22,15 @@
 #include <stdlib.h>
 #include <string.h>
 
-ResultPtr analyze(int argc, char **argv, OptionPtr *opts)
+ResultPtr analyze(int argc, char **argv, OptionsListPtr options_list)
 {
     if(argc < 1 || argv == NULL)
         return NULL;
 
-    if(opts == NULL)
+    if(options_list == NULL)
         return NULL;
 
-    ResultPtr res = create_result(opts, argc - 1);
+    ResultPtr res = create_result(options_list, argc - 1);
     OptionPtr curr_opt = NULL;
     char curr_name;
     char **curr_param = res -> params;
@@ -74,24 +74,24 @@ ResultPtr analyze(int argc, char **argv, OptionPtr *opts)
     return res;
 }
 
-static OptionPtr find_option(char opt, OptionPtr *options)
+static OptionPtr find_option(char opt, OptionsListPtr options_list)
 {
-    OptionPtr *ptr;
+    OptionPtr opt_ptr;
 
-    for(ptr = options; ptr != NULL; ++ptr)
-        if((*ptr) -> name == opt)
-            return *ptr;
+    for(opt_ptr = options_list -> lh_first; opt_ptr != NULL; opt_ptr = opt_ptr -> entries.le_next)
+        if(opt_ptr -> name == opt)
+            return opt_ptr;
 
     return NULL;
 }
 
-static OptionPtr find_long_option(char *opt, OptionPtr *options)
+static OptionPtr find_long_option(char *opt, OptionsListPtr options_list)
 {
-    OptionPtr *ptr;
+    OptionPtr opt_ptr;
 
-    for(ptr = options; ptr != NULL; ++ptr)
-        if(strcmp((*ptr) -> long_name, opt) == 0)
-            return *ptr;
+    for(opt_ptr = options_list -> lh_first; opt_ptr != NULL; opt_ptr = opt_ptr -> entries.le_next)
+        if(strcmp(opt_ptr -> long_name, opt) == 0)
+            return opt_ptr;
 
     return NULL;
 }
