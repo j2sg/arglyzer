@@ -24,7 +24,7 @@
 
 ResultPtr analyze(int argc, char **argv, OptionsListPtr options_list)
 {
-    if(argc < 1 || argv == NULL)
+    if(argc <= 1 || argv == NULL)
         return NULL;
 
     if(options_list == NULL)
